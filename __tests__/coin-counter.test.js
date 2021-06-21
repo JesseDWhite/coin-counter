@@ -5,3 +5,9 @@ describe("exactChangeNeeded", () => {
     expect(exactChangeNeeded("pizza")).toEqual(-1);
   });
 });
+
+describe("exactChangeNeeded", () => {
+  test("it should return zero if the expected output is zero", () => {
+    expect(exactChangeNeeded(0)).toEqual(0);
+  });
+});

@@ -10,6 +10,11 @@ export default function exactChangeNeeded(amountOfMoney) {
     return -1;
   }
 
+  let pennies = 0;
+  let nickels = 0;
+  let dimes = 0;
+  let quarters = 0;
+
   // For recursion, 1st we need a **base case** (aka escape hatch!) so it doesn't recurse (aka "loop") forever
   // BASE CASE (safety net!)
   if (amountOfMoney === 0) {
@@ -19,13 +24,21 @@ export default function exactChangeNeeded(amountOfMoney) {
   }
   // RECURSIVE CASE (kinda like a WHILE-LOOP!)
   else if (amountOfMoney >= 0) {
-    // DO STUFF
+    let counter = 0
+    // We have quarters (25), dimes (10), nickles (5), & pennies (1)
+    // We want to check the BIGGEST first to get the ideal # of coins -- e.g., 1 quarter vs. 25 pennies
+    if (amountOfMoney >= 0.25) {
+      // If 25+ pennies, we can change them into a quarter
+      quarters = quarters + 1; // Add a quarter...
+      amountOfMoney -= 0.25; // ...subtract 25 pennies to keep the right total
 
-    // After DOING STUFF, function calls itself again
-    return exactChangeNeeded(SOME_VALUE_AFTER_DOING_STUFF);
-    //  ^ this part is where the function calls **itself**
-    //  Calling itself is "recursion"
-    //  ...and it breaks shit/goes on forever, unless we
-    //    have a base case / escape hatch to end it
+      // After DOING STUFF, function calls itself again
+      return exactChangeNeeded(amountOfMoney);
+      //  ^ this part is where the function calls **itself**
+      //  Calling itself is "recursion"
+      //  ...and it breaks shit/goes on forever, unless we
+      //    have a base case / escape hatch to end it
+    }
+
   }
 }
