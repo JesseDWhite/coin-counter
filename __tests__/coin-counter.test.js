@@ -11,3 +11,9 @@ describe("exactChangeNeeded", () => {
     expect(exactChangeNeeded(0)).toEqual(0);
   });
 });
+
+describe("exactChangeNeeded", () => {
+  test("it should return and array of change needed", () => {
+    expect(exactChangeNeeded(1.00)).toEqual([4, 0, 0, 0]);
+  });
+});
